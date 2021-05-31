@@ -39,7 +39,7 @@ class ConnectionPool:
         ===       
         """)
         writer.write(f'{message}\n'.encode())
-        pass
+        
 
     def broadcast(self, writer, message):
         for user in self.connection_pool:
