@@ -32,12 +32,11 @@ class Blockchain:
             timestamp=time() 
         )
 
-        # Reset the list of peding transactions
-        # WARNING: this is wrong.
-        self.pending_transactions = []
-
         return block
     
+    def reset_pending_transactions(self):
+        self.pending_transactions = []
+
     @staticmethod
     def create_block(
         height, transactions, previous_hash, nonce, target, timestamp=None
@@ -118,5 +117,6 @@ class Blockchain:
                 break
             await asyncio.sleep(0)
         self.chain.append(new_block)
+        self.reset_peding_transactions()
         logger.info("Found a new block:", new_block)            
     
